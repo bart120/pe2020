@@ -6,7 +6,8 @@
              xmlns:vm="clr-namespace:pe2020.ViewModels"
              mc:Ignorable="d"
              x:Class="pe2020.Views.FavoritesPage"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             x:Name="favoritesPage">
     
     <!--<ContentPage.BindingContext>
         <vm:FavoritesViewModel />
@@ -26,7 +27,7 @@
                     <DataTemplate>
                         <ViewCell>
                             <ViewCell.ContextActions>
-                                <MenuItem Text="Suppr." />
+                                <MenuItem Text="Suppr." CommandParameter="{Binding .}" Command="{Binding Source={x:Reference favoritesPage}, Path=BindingContext.DeleteCityCommand}" />
                             </ViewCell.ContextActions>
                             <StackLayout Orientation="Horizontal" Padding="10">
                                 <Label Text="{Binding Name}" HorizontalOptions="FillAndExpand"

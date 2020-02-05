@@ -27,5 +27,10 @@ namespace pe2020.Services
         {
             return database.InsertAsync(city);
         }
+
+        public Task<int> DeleteCityAsync(int id)
+        {
+            return database.DeleteAsync<City>(id);
+        }
     }
 }

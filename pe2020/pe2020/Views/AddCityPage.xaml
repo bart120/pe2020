@@ -16,7 +16,7 @@
     <ContentPage.Content>
         <StackLayout Spacing="20" Padding="15" >
             <Label Text="Nom de la ville" FontSize="Medium" />
-            <Entry FontSize="Small" Text="{Binding Path=BindingContext.City.Name, Mode=OneWayToSource}" />
+            <Entry FontSize="Small" Text="{Binding Path=BindingContext.City.Name, Mode=OneWayToSource}" x:Name="cityName" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

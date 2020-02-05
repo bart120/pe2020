@@ -16,6 +16,8 @@ namespace pe2020.ViewModels
 
 		public Command RefreshCitiesCommand { get; set; }
 
+		public Command<City> DeleteCityCommand { get; set; }
+
 		private bool isBusy = false;
 
 		public bool IsBusy
@@ -29,6 +31,7 @@ namespace pe2020.ViewModels
 		{
 			this.Title = "Villes favorites";
 			this.RefreshCitiesCommand = new Command(async () => await ExecuteRefreshCities());
+			this.DeleteCityCommand = new Command<City>(async (x) => await this.ExecuteDeleteCity(x));
 			this.Cities = new ObservableCollection<City>();
 			//App.CityService.AddCityAsync(new City { Name = "Paris", Condition = "10d" }).Wait();
 
@@ -60,6 +63,13 @@ namespace pe2020.ViewModels
 				this.Cities.Add(item);
 			}*/
 			
+		}
+
+		public async Task ExecuteDeleteCity(City c)
+		{
+			await App.CityService.DeleteCityAsync(c.ID);
+			//await ExecuteRefreshCities();
+			this.Cities.Remove(c);
 		}
 
 

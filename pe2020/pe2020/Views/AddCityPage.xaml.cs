@@ -22,6 +22,12 @@ namespace pe2020.Views
             //viewModel.BackToPage += async () => await ViewModel_BackToPage();
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            this.cityName.Focus();
+        }
+
         /*private async Task ViewModel_BackToPage()
         {
             await this.Navigation.PopAsync();
