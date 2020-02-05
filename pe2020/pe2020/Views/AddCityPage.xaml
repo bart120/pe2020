@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:pe2020.ViewModels"
+             mc:Ignorable="d"
+             x:Class="pe2020.Views.AddCityPage"
+             Title="Ajouter une ville">
+   <!-- <ContentPage.BindingContext>
+        <vm:AddCityViewModel />
+    </ContentPage.BindingContext>-->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Enregistrer" Command="{Binding AddCommand}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Spacing="20" Padding="15" >
+            <Label Text="Nom de la ville" FontSize="Medium" />
+            <Entry FontSize="Small" Text="{Binding Path=BindingContext.City.Name, Mode=OneWayToSource}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

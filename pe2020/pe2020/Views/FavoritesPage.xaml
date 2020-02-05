@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:pe2020.ViewModels"
+             mc:Ignorable="d"
+             x:Class="pe2020.Views.FavoritesPage"
+             Title="{Binding Title}">
+    
+    <!--<ContentPage.BindingContext>
+        <vm:FavoritesViewModel />
+    </ContentPage.BindingContext>-->
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Ajouter" Clicked="ToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView
+                ItemsSource="{Binding Cities}"
+                RefreshCommand="{Binding RefreshCitiesCommand}"
+                IsPullToRefreshEnabled="True"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Suppr." />
+                            </ViewCell.ContextActions>
+                            <StackLayout Orientation="Horizontal" Padding="10">
+                                <Label Text="{Binding Name}" HorizontalOptions="FillAndExpand"
+                                       Style="{DynamicResource ListItemTextStyle}"/>
+                                <Image Source="{Binding Condition}" HorizontalOptions="End" />
+                            </StackLayout>
+                            
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+     
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
