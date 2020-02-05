@@ -22,6 +22,7 @@ namespace pe2020
         public App()
         {
             InitializeComponent();
+            DependencyService.Register<WeatherService>();
             MainPage = new MainPage();
         }
 
