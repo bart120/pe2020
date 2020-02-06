@@ -7,32 +7,25 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
+using pe2020.ViewModels;
 
 namespace pe2020.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomePage : ContentPage
     {
+        HomeViewModel viewModel;
         public HomePage()
         {
             InitializeComponent();
+            this.BindingContext = viewModel = new HomeViewModel();
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            try
-            {
-                var location = await Geolocation.GetLocationAsync();
-                //await DisplayAlert("Ici", $"latitude: {location.Latitude}, longitude: {location.Longitude}", "OK");
-                var placeMark = (await Geocoding.GetPlacemarksAsync(location)).FirstOrDefault().Locality;
-                //await DisplayAlert("Ici", $"{placeMark}", "OK");
-                MessagingCenter.Send(this, "UPDATE_LOCATION", placeMark);
-            }
-            catch (PermissionException e) { }
-            catch (FeatureNotSupportedException e) { }
-            catch (FeatureNotEnabledException e) { }
-            catch (Exception e) { }
+            await this.viewModel.LoadGeoAsync();
+            
             
         }
     }

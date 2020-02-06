@@ -3,14 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:pe2020.Controls"
              mc:Ignorable="d"
              x:Class="pe2020.Views.HomePage"
              Title="Accueil">
     <ContentPage.Content>
+
         <StackLayout>
-            <Label Text="Home"
-                VerticalOptions="CenterAndExpand" 
+            <ActivityIndicator IsRunning="{Binding IsBuzy}" Color="Orange" />
+            <Label Text="{Binding City.Name}" StyleClass="LabelBlue"
+                VerticalOptions="Center" 
                 HorizontalOptions="CenterAndExpand" />
+            <controls:CardView Title="{Binding City.Name}" Description="{Binding City.Weather.Main.Temperature}" ></controls:CardView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

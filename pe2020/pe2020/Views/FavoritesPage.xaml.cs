@@ -51,5 +51,20 @@ namespace pe2020.Views
         {
             MessagingCenter.Send(this, "SelectedCity", e.Item as City);
         }
+
+        private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+
+            if(this.favoritesPage.ToolbarItems.Count == 1 )
+            {
+                this.favoritesPage.ToolbarItems.Add(
+                    new ToolbarItem("Suppr.", "", () => this.viewModel.DeleteCityCommand.Execute(null))
+                );
+            }
+            else if(!viewModel.Cities.Any(x => x.Selected))
+            {
+                this.favoritesPage.ToolbarItems.Remove(this.favoritesPage.ToolbarItems[1]);
+            }
+        }
     }
 }

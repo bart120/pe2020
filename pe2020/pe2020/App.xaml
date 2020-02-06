@@ -6,6 +6,26 @@
              mc:Ignorable="d"
              x:Class="pe2020.App">
     <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="NavigationPrimary">#2196F3</Color>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}"/>
+                <Setter Property="BarTextColor" Value="White" />
+            </Style>
+            <Style TargetType="Entry">
+                <Style.Triggers>
+                    <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                        <Setter Property="BackgroundColor" Value="Yellow" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="LabelBlueKey" TargetType="Label">
+                <Setter Property="BackgroundColor" Value="{StaticResource NavigationPrimary}" />
+            </Style>
+            <Style Class="SuperLabelBlue" BasedOn="{StaticResource LabelBlueKey}" TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+            </Style>
 
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

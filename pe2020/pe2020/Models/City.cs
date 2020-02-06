@@ -18,6 +18,9 @@ namespace pe2020.Models
 
         [Ignore]
         public WeatherData Weather { get; set; }
+
+        [Ignore]
+        public bool Selected { get; set; }
     }
 }
 

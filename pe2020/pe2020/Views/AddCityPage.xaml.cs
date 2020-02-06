@@ -25,7 +25,7 @@ namespace pe2020.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            this.cityName.Focus();
+            //this.cityName.Focus();
         }
 
         /*private async Task ViewModel_BackToPage()

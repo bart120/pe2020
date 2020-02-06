@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:pe2020.ViewModels"
+             xmlns:controls="clr-namespace:pe2020.Controls"
              mc:Ignorable="d"
              x:Class="pe2020.Views.FavoritesPage"
              Title="{Binding Title}"
@@ -24,15 +25,22 @@
                 IsPullToRefreshEnabled="True"
                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                 ItemTapped="listView_ItemTapped"
-                CachingStrategy="RecycleElement">
+                CachingStrategy="RecycleElement" >
+            <!--HasUnevenRows="True">-->
                 <ListView.ItemTemplate>
                     <DataTemplate>
+                        <!--<ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Suppr." CommandParameter="{Binding .}" Command="{Binding Source={x:Reference favoritesPage}, Path=BindingContext.DeleteCityCommand}" />
+                            </ViewCell.ContextActions>
+                            <controls:CardView Title="{Binding Name}" Description="{Binding Weather.Wind.Speed, StringFormat='{0} km/h'}" />
+                        </ViewCell>-->
                         <ViewCell>
                             <ViewCell.ContextActions>
                                 <MenuItem Text="Suppr." CommandParameter="{Binding .}" Command="{Binding Source={x:Reference favoritesPage}, Path=BindingContext.DeleteCityCommand}" />
                             </ViewCell.ContextActions>
                             <StackLayout Orientation="Horizontal" Padding="10">
-
+                                <CheckBox IsChecked="{Binding Selected}" HorizontalOptions="Start" CheckedChanged="CheckBox_CheckedChanged"/>
                                 <Label Text="{Binding Name}" HorizontalOptions="FillAndExpand"
                                        Style="{DynamicResource ListItemTextStyle}"/>
                                 <Image Source="{Binding Weather.Weather[0].Icon, StringFormat='https://openweathermap.org/img/wn/{0}@2x.png'}" HorizontalOptions="End" />

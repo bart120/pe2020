@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="pe2020.Controls.CardView"
+             >
+  <ContentView.Content>
+        <Frame  x:Name="myFrame"
+            CornerRadius="5" 
+               HasShadow="true"
+               Padding="8"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               BorderColor="ForestGreen"
+               BackgroundColor="LightGray">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="4" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0"
+                       Text="{Binding Title, FallbackValue='Titre'}"
+                       FontAttributes="Bold"
+                       FontSize="Large"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Start" />
+                <BoxView Grid.Row="1"
+                         BackgroundColor="DarkSlateGray" 
+                         HorizontalOptions="Fill"
+                         VerticalOptions="Start" />
+                <Label Grid.Row="2"
+                       Text="{Binding Description}"
+                       VerticalTextAlignment="Start"
+                       VerticalOptions="Fill"
+                       HorizontalOptions="Fill" />
+
+            </Grid>
+            
+        </Frame>
+  </ContentView.Content>
+</ContentView>

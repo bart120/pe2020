@@ -6,13 +6,13 @@ using System.ComponentModel;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using System.Linq;
 
 namespace pe2020.ViewModels
 {
     public class FavoritesViewModel : BaseViewModel, INotifyPropertyChanged
     {
 		public ObservableCollection<City> Cities { get; set; }
-
 
 		public Command RefreshCitiesCommand { get; set; }
 
@@ -25,6 +25,15 @@ namespace pe2020.ViewModels
 			get { return isBusy; }
 			set { SetProperty(ref isBusy, value); }
 		}
+
+		private bool isSelected = false;
+
+		public bool IsSelected
+		{
+			get { return isSelected; }
+			set { SetProperty(ref isSelected, value); }
+		}
+
 
 
 		public FavoritesViewModel()
@@ -73,9 +82,15 @@ namespace pe2020.ViewModels
 
 		public async Task ExecuteDeleteCity(City c)
 		{
-			await App.CityService.DeleteCityAsync(c.ID);
+			/*await App.CityService.DeleteCityAsync(c.ID);
 			//await ExecuteRefreshCities();
-			this.Cities.Remove(c);
+			this.Cities.Remove(c);*/
+			var selectedCities = this.Cities.Where(x => x.Selected == true).ToList();
+			foreach (var item in selectedCities)
+			{
+				await App.CityService.DeleteCityAsync(item.ID);
+				this.Cities.Remove(item);
+			}
 		}
 	}
 
