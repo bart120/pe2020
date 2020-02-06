@@ -14,7 +14,7 @@ namespace pe2020.Models
         [JsonProperty("main")]
         public Main Main { get; set; }
         [JsonProperty("wind")]
-        public Wind wind { get; set; }
+        public Wind Wind { get; set; }
     }
 
     public class Main
@@ -37,5 +37,7 @@ namespace pe2020.Models
     {
         [JsonProperty("speed")]
         public double Speed { get; set; }
+        [JsonProperty("deg")]
+        public double Deg { get; set; }
     }
 }

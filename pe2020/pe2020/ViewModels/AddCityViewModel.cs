@@ -10,7 +10,7 @@ namespace pe2020.ViewModels
 {
     public class AddCityViewModel : BaseViewModel
     {
-        public IRestDataService<WeatherData, string> service => DependencyService.Get<IRestDataService<WeatherData, string>>();
+        
 
         private INavigation navigation;
 

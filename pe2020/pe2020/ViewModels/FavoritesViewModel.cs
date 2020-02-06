@@ -33,6 +33,7 @@ namespace pe2020.ViewModels
 			this.RefreshCitiesCommand = new Command(async () => await ExecuteRefreshCities());
 			this.DeleteCityCommand = new Command<City>(async (x) => await this.ExecuteDeleteCity(x));
 			this.Cities = new ObservableCollection<City>();
+			
 			//App.CityService.AddCityAsync(new City { Name = "Paris", Condition = "10d" }).Wait();
 
 			/*this.Cities = new ObservableCollection<City> {
@@ -49,13 +50,18 @@ namespace pe2020.ViewModels
 			this.Cities = new ObservableCollection<City>(cities);*/
 		}
 
+		
+
 		public async Task ExecuteRefreshCities()
 		{
 			if(IsBusy)
 				return;
 			IsBusy = true;
 			this.Cities.Clear();
-			(await App.CityService.GetCitiesAsync())?.ForEach(x => this.Cities.Add(x));
+			(await App.CityService.GetCitiesAsync())?.ForEach(async (x) => {
+				x.Weather = await service.GetItemNameAsync(x.Name);
+				this.Cities.Add(x);
+			});
 			IsBusy = false;
 			/*var result = await App.CityService.GetCitiesAsync();
 			foreach (var item in result)
@@ -71,15 +77,11 @@ namespace pe2020.ViewModels
 			//await ExecuteRefreshCities();
 			this.Cities.Remove(c);
 		}
-
-
-
-
-
-
-
-
-
-
 	}
+
+	/*public class CityWeather
+	{
+		public City City { get; set; }
+		public WeatherData Wheater { get; set; }
+	}*/
 }

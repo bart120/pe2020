@@ -1,13 +1,17 @@
-﻿using System;
+﻿using pe2020.Models;
+using pe2020.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Xamarin.Forms;
 
 namespace pe2020.ViewModels
 {
     public abstract class BaseViewModel : INotifyPropertyChanged
     {
+		public IRestDataService<WeatherData, string> service => DependencyService.Get<IRestDataService<WeatherData, string>>();
 
 		#region GET/SET
 		string title;

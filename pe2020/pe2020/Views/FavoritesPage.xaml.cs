@@ -1,4 +1,5 @@
-﻿using pe2020.ViewModels;
+﻿using pe2020.Models;
+using pe2020.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,24 @@ namespace pe2020.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            viewModel.RefreshCitiesCommand.Execute(null);
+            //if (viewModel.Cities.Count == 0)
+                viewModel.RefreshCitiesCommand.Execute(null);
+            viewModel.IsBusy = false;
+        }
+
+        private void ViewCell_Tapped(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            
+        }
+
+        private void listView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            MessagingCenter.Send(this, "SelectedCity", e.Item as City);
         }
     }
 }

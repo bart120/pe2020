@@ -1,4 +1,5 @@
-﻿using System;
+﻿using pe2020.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace pe2020.Views
         public SettingsPage()
         {
             InitializeComponent();
+           
         }
     }
 }

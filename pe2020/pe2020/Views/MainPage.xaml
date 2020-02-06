@@ -7,6 +7,7 @@
              xmlns:and="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
              mc:Ignorable="d"
              x:Class="pe2020.MainPage"
+            x:Name="Tab"
              and:TabbedPage.ToolbarPlacement="Bottom"
             and:TabbedPage.IsSwipePagingEnabled="False">
 
@@ -23,6 +24,12 @@
 
         </NavigationPage>
         <NavigationPage Title="Paramètres">
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="tab_about.png" />
+                    <On Platform="Android" Value="tab_feed.png" />
+                </OnPlatform>
+            </NavigationPage.Icon>
             <x:Arguments>
                 <views:SettingsPage></views:SettingsPage>
             </x:Arguments>

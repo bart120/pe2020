@@ -92,16 +92,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\fleche_haut.png" />
+    <AndroidResource Include="Resources\drawable\fleche_haut.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\fleche_droite.png" />
+    <Content Include="Resources\drawable\fleche_droite.jpg" />
+    <AndroidResource Include="Resources\drawable\tab_feed.png" />
+    <AndroidResource Include="Resources\drawable\tab_about.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\fleche_bas.png" />
+    <Content Include="Resources\drawable\fleche_bas.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\fleche_gauche.png" />
+    <Content Include="Resources\drawable\fleche_gauche.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

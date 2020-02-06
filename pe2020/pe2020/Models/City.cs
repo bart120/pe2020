@@ -13,8 +13,11 @@ namespace pe2020.Models
         [MaxLength(40)]
         public string Name { get; set; }
         [MaxLength(5)]
+   
         public string Condition { get; set; }
 
+        [Ignore]
+        public WeatherData Weather { get; set; }
     }
 }
 

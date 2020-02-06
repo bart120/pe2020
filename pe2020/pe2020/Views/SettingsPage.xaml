@@ -3,14 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:pe2020.ViewModels"
              mc:Ignorable="d"
              x:Class="pe2020.Views.SettingsPage"
              Title="Paramètres">
+    <ContentPage.BindingContext>
+        <vm:SettingsViewModel />
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Paramètres"
-                VerticalOptions="CenterAndExpand" 
+            <Label Text="{Binding City.Name}"
+                VerticalOptions="Center" 
                 HorizontalOptions="CenterAndExpand" />
+            <Image Source="{Binding City.Weather.Weather[0].Icon, StringFormat='https://openweathermap.org/img/wn/{0}@2x.png'}"  />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

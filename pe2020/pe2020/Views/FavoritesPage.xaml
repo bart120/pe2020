@@ -8,21 +8,23 @@
              x:Class="pe2020.Views.FavoritesPage"
              Title="{Binding Title}"
              x:Name="favoritesPage">
-    
+
     <!--<ContentPage.BindingContext>
         <vm:FavoritesViewModel />
     </ContentPage.BindingContext>-->
-    
+
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Ajouter" Clicked="ToolbarItem_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <ListView
+            <ListView x:Name="listView"
                 ItemsSource="{Binding Cities}"
                 RefreshCommand="{Binding RefreshCitiesCommand}"
                 IsPullToRefreshEnabled="True"
-                IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                ItemTapped="listView_ItemTapped"
+                CachingStrategy="RecycleElement">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -30,16 +32,20 @@
                                 <MenuItem Text="Suppr." CommandParameter="{Binding .}" Command="{Binding Source={x:Reference favoritesPage}, Path=BindingContext.DeleteCityCommand}" />
                             </ViewCell.ContextActions>
                             <StackLayout Orientation="Horizontal" Padding="10">
+
                                 <Label Text="{Binding Name}" HorizontalOptions="FillAndExpand"
                                        Style="{DynamicResource ListItemTextStyle}"/>
-                                <Image Source="{Binding Condition, StringFormat='https://openweathermap.org/img/wn/{0}@2x.png'}" HorizontalOptions="End" />
+                                <Image Source="{Binding Weather.Weather[0].Icon, StringFormat='https://openweathermap.org/img/wn/{0}@2x.png'}" HorizontalOptions="End" />
+
+                                <Image Source="fleche_haut.jpg" Rotation="{Binding Weather.Wind.Deg}"  />
+                                <Label Text="{Binding Weather.Wind.Speed}" 
+                                       Style="{DynamicResource ListItemTextStyle}"/>
                             </StackLayout>
-                            
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-     
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
